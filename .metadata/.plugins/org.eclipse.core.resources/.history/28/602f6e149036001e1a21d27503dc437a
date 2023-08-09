@@ -1,0 +1,11 @@
+
+public class OperTest3 {
+
+	public static void main(String[] args) {
+		// 나머지 없이 정수만 출력
+		System.out.println(10 / 4); // 2
+		System.out.println(10.0 / 4); // 2.5
+
+	}
+
+}

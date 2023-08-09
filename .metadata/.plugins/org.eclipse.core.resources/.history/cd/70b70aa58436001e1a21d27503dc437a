@@ -1,0 +1,12 @@
+
+public class CastTest {
+
+	public static void main(String[] args) {
+		byte bt = 10;
+		int i = bt; // int가 byte보다 범위가 넓으므로, 데이터 손실이 잃어나지 않으므로 자동 형변환
+		
+		byte bt2 = (byte) i; // 캐스팅 (강제 형변환)
+
+	}
+
+}

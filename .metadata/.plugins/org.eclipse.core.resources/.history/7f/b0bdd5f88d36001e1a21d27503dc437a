@@ -1,0 +1,17 @@
+
+public class OperTest1 {
+
+	public static void main(String[] args) {
+		int n = 10;
+		n++; // n = n + 1;
+		System.out.println(n); // 11
+
+		++n;
+		System.out.println(n); // 12
+		
+		int m = 100;
+		System.out.println(m++); // 100
+		System.out.println(++m); // 102
+	}
+
+}

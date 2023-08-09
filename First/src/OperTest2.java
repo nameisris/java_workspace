@@ -1,0 +1,25 @@
+
+public class OperTest2 {
+
+	public static void main(String[] args) {
+		int i = -10;
+		i = +i; // i * 1
+		System.out.println(i); // -10
+		
+		i = -1; // i*(-1)
+		System.out.println(i); // 10
+		
+		boolean power = false;
+		power = !power; // false => true 변경
+		System.out.println(power); // true
+		power = !power;
+		System.out.println(power); // true
+
+		// ~: 보수 연산자
+		int j = 10;
+		System.out.println(j); // 10
+		j = ~j; // 2진수 기준 2의 보수 (1의 보수 후, +1)
+		System.out.println(j); // -11	
+	}
+
+}

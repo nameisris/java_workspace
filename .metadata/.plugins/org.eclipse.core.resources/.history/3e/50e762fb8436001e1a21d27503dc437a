@@ -1,0 +1,14 @@
+
+public class CastTest {
+
+	public static void main(String[] args) {
+		byte bt = 10;
+		int i = bt; // int가 byte보다 범위가 넓으므로, 데이터 손실이 잃어나지 않으므로 자동 형변환
+		
+		// 범위가 넓은 변수형을 낮은 변수형으로 형변환 시, 데이터 손실의 가능성
+		// 따라서 강제 형변환
+		byte bt2 = (byte) i; // Casting (강제 형변환)
+
+	}
+
+}

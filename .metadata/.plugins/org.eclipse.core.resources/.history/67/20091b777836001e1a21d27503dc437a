@@ -1,0 +1,8 @@
+
+public class VariableTest {
+	
+	public static void main(String[] args) {
+		char ch = 'A'; // char: 자료형, ch: 변수명, = 대입연산자, 'A': 리터럴 데이터
+		char up7;
+	}
+}
