@@ -11,7 +11,6 @@ public class Ex2 {
 		};
 		
 		System.out.println(arr[3].length);
-
 	}
 
 }
