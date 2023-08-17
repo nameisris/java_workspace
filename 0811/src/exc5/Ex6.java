@@ -13,11 +13,11 @@ public class Ex6 {
 		System.out.println("money: " + money);
 		
 		for(int i = 0;i < coinUnit.length;i++) {
-			int cnt = 0;
+			int cnt = 0; // 동전 개수
 			
-			if(money > coinUnit[i]) {
-				cnt = money / coinUnit[i];
-				money %= coinUnit[i];
+			if(money > coinUnit[i]) { // 현재 돈이 n원짜리 동전보다 값이 클 경우
+				cnt = money / coinUnit[i]; // 거스름 동전 수
+				money %= coinUnit[i]; // 거스름 돈
 				System.out.println(coinUnit[i] + "원: " + cnt);
 			}
 		}

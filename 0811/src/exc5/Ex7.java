@@ -1,5 +1,7 @@
 package exc5;
 
+import java.util.Scanner;
+
 public class Ex7 {
 
 	public static void main(String[] args) {
@@ -12,7 +14,9 @@ public class Ex7 {
 		
 		// 문자열을 숫자로 변환
 		// 입력한 값이 숫자가 아닐 경우, 예외 발생
-		int money = 2680;//Integer.parseInt(args[0]);
+		Scanner sc = new Scanner(System.in);
+		System.out.print("금액: ");
+		int money = sc.nextInt(); // Integer.parseInt(args[0]);
 		
 		System.out.println("money: " + money);
 		
@@ -24,7 +28,7 @@ public class Ex7 {
 			int coinNum = 0;
 			
 			coinNum = money / coinUnit[i]; // 거스름할 특정 단위 동전의 개수
-			
+			// cointNum = money / coinUnit[i]? money / coinUnit[]: coin[i];
 			if(coinNum > coin[i]) { // 만일, 거스름할 최대 단위 동전의 개수가 부족한 경우
 				coinNum = coin[i];
 				coin[i] = 0;

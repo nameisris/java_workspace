@@ -38,6 +38,7 @@ public class Ex9 {
 		}
 		*/
 		
+		// 배열의 모든 요소 출력
 		for(int i = 0;i < result.length;i++) { // result 행
 			for(int j = 0;j < result[i].length;j++) { // result 열
 				System.out.print(result[i][j]);
