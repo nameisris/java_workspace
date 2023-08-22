@@ -27,7 +27,7 @@ public class ClassTest5 {
 		
 		bank.allAccountInfo();
 		// 계좌변호: 10001, 이름: 고길동, 잔액: 100000
-		// 계좌변호: 10002, 이름: 김길동, 잔액: 200000
+		// 계좌변호: 10002, 이름: 김길동, 잔액: 200000f
 		
 		bank.accountInfo("10001");
 		// 계좌변호: 10001, 이름: 고길동, 잔액: 100000
@@ -47,6 +47,12 @@ class Account {
 	String id;
 	String name;
 	int balance;
+	
+	Account(String id, String name, int money) {
+		this.id = id;
+		this.name = name;
+		balance = money; // 매개변수명이 겹치지 않기에, this 사용 않음
+	}
 	
 	String info() {
 		return String.format("고객번호: %s, 이름: %s, 잔액: %d", id, name, balance);
@@ -68,10 +74,7 @@ class Bank {
 	int accCnt;
 	
 	void makeAccount(String id, String name, int balance) {
-		Account acc = new Account();
-		acc.id = id;
-		acc.name = name;
-		acc.balance = balance;
+		Account acc = new Account(id, name, balance);
 		accs[accCnt++] = acc;
 	}
 	
@@ -81,29 +84,46 @@ class Bank {
 		}
 	}
 	
-	void accountInfo(String id) {
+	Account searchAccById(String id) {
+		Account acc = null;
 		for(int i = 0;i < accCnt;i++) {
-			if(id == accs[i].id) {
-				System.out.println(accs[i].info());
+			if(accs[i].id.equals(id)) {
+				return accs[i];
 			}
 		}
+		
+		return null;
+	}
+	
+	void accountInfo(String id) {
+		Account acc = searchAccById(id);
+		
+		if(acc == null) {
+			System.out.println("계좌번호가 틀립니다.");
+			return;
+		}
+		System.out.println(acc.info());
 	}
 	
 	void deposit(String id, int money) {
-		for(int i = 0;i < accCnt;i++) {
-			if(id == accs[i].id) {
-				accs[i].balance += money;
-			}
+		Account acc = searchAccById(id);
+		
+		if(acc == null) {
+			System.out.println("계좌번호가 틀립니다.");
+			return;
 		}
+		
+		acc.deposit(money);
 	}
 	
 	void withdraw(String id, int money) {
-		for(int i = 0;i < accCnt;i++) {
-			if(id == accs[i].id) {
-				if(accs[i].balance >= money) {
-					accs[i].balance -= money;			
-				}
-			}
+		Account acc = searchAccById(id);
+		
+		if(acc == null) {
+			System.out.println("계좌번호가 틀립니다.");
+			return;
 		}
+		
+		acc.withdraw(money);
 	}
 }
