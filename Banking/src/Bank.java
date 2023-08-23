@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import acc.Account;
+
 public class Bank {
 	Scanner sc = new Scanner(System.in);
 	Account[] accs = new Account[100];
@@ -34,7 +36,7 @@ public class Bank {
 	Account searchAccById(String id) {
 		Account acc = null;
 		for(int i = 0;i < accCnt;i++) {
-			if(accs[i].id.equals(id)) {
+			if(accs[i].getId().equals(id)) {
 				return accs[i];
 			}
 		}

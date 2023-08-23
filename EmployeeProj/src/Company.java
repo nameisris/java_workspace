@@ -1,3 +1,4 @@
+import emp.Employee;
 
 public class Company {
 	Employee[] emps = new Employee[100]; // 기본값 초기화
@@ -13,7 +14,7 @@ public class Company {
 		com.enter(emp1);
 		com.enter(emp2);
 		com.enter(emp3);
-		com.setBonus(emp1, 1000000);
+		com.setBonus(10001, 1000000); // 10001 사번의 직원에게 1000000원의 보너스
 		
 		com.allEmployeeInfo();
 		System.out.println("총 급여액: " + com.getTotalPay());
@@ -24,8 +25,20 @@ public class Company {
 		emps[empCnt++] = emp;
 	}
 	
-	void setBonus(Employee emp, int bonus) {
-		emp.salary = emp.setBonus(bonus);
+	void setBonus(int id, int money) {
+		Employee emp = null;
+		for(int i = 0;i < empCnt;i++) {
+			if(emps[i].getId() == id) {
+				emp = emps[i];
+				break;
+			}
+		}
+		
+		if(emp == null) {
+			System.out.println("사번이 틀립니다.");
+			return;
+		}
+		emp.setBonus(money);
 	}
 	
 	void allEmployeeInfo() {
@@ -38,7 +51,7 @@ public class Company {
 		int sum = 0;
 		
 		for(int i = 0;i < empCnt;i++) {
-			sum += emps[i].salary;
+			sum += emps[i].getSal();
 		}
 		
 		return sum;
