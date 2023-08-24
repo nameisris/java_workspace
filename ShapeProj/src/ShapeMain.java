@@ -1,6 +1,7 @@
-import point.Point;
 import shapes.Circle;
+import shapes.Point;
 import shapes.Rectangle;
+import shapes.ShapeSet;
 import shapes.Triangle;
 
 public class ShapeMain {
@@ -17,7 +18,7 @@ public class ShapeMain {
 		ss.allShapeDraw();
 
 	}
-
+	
 }
 
 /*

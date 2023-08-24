@@ -5,4 +5,18 @@
     <fullyQualifiedTypeName name="Account"/>
     <fullyQualifiedTypeName name="java.util.Arrays"/>
     <fullyQualifiedTypeName name="java.sql.Date"/>
+    <fullyQualifiedTypeName name="emp.Employee"/>
+    <fullyQualifiedTypeName name="emp.Permanent"/>
+    <fullyQualifiedTypeName name="emp.Sales"/>
+    <fullyQualifiedTypeName name="emp.PartTime"/>
+    <fullyQualifiedTypeName name="shapes.Circle"/>
+    <fullyQualifiedTypeName name="shapes.Triangle"/>
+    <fullyQualifiedTypeName name="shapes.Rectangle"/>
+    <fullyQualifiedTypeName name="java.awt.Shape"/>
+    <fullyQualifiedTypeName name="shapes.Shape"/>
+    <fullyQualifiedTypeName name="point.Point"/>
+    <fullyQualifiedTypeName name="ex7.SutdaDeck"/>
+    <fullyQualifiedTypeName name="ex7.SutdaCard"/>
+    <fullyQualifiedTypeName name="ex7.SingRobot"/>
+    <fullyQualifiedTypeName name="ex7.DanceRobot"/>
 </qualifiedTypeNameHistroy>

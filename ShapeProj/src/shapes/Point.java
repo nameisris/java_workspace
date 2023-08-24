@@ -1,9 +1,9 @@
-package point;
+package shapes;
 
 
 public class Point {
-	public int x;
-	public int y;
+	private int x;
+	private int y;
 	
 	public Point() {
 		
@@ -25,5 +25,9 @@ public class Point {
 	}
 	public void setY(int y) {
 		this.y = y;
+	}
+	
+	public String info() {		
+		return String.format("(%d, %d)", x, y);
 	}
 }

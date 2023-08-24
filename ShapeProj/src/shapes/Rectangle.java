@@ -1,22 +1,13 @@
 package shapes;
 
-import point.Point;
-
 public class Rectangle extends Shape {
-	Point startPos = new Point();
-	int width;
-	int height;
+	private Point startPos;
+	private int width;
+	private int height;
 
 	public Rectangle() {
-		
-	}
-	
-	public Rectangle(String color, int x, int y, int width, int height) {
-		super(color);
-		startPos.x = x;
-		startPos.y = y;
-		this.width = width;
-		this.height = height;
+//		super("black");
+//		startPos = new Point();
 	}
 	
 	public Rectangle(String color, Point startPos, int width, int height) {
@@ -26,6 +17,13 @@ public class Rectangle extends Shape {
 		this.height = height;
 	}
 	
+	public Rectangle(String color, int x, int y, int width, int height) {
+		super(color);
+		startPos = new Point(x, y);
+		this.width = width;
+		this.height = height;
+	}
+
 	public Point getStartPos() {
 		return startPos;
 	}
@@ -34,8 +32,25 @@ public class Rectangle extends Shape {
 		this.startPos = startPos;
 	}
 	
+	public int getWidth() {
+		return width;
+	}
+
+	public void setWidth(int width) {
+		this.width = width;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
+	}
+
 	@Override
 	public void draw() {
-		System.out.println(String.format("[사각형: 색(%s), 시작점(%d, %d), 너비(%d), 높이(%d)]", color, startPos.x, startPos.y, width, height));
+		System.out.println(String.format("[사각형: 색(%s), 시작점%s, 너비(%d), 높이(%d)]",
+				getColor(), startPos.info(), getWidth(), getHeight()));
 	}
 }

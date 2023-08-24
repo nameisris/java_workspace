@@ -1,7 +1,7 @@
 package emp;
 
 public class Sales extends Permanent {
-	int incentive;
+	private int incentive;
 	
 	public Sales() {
 		

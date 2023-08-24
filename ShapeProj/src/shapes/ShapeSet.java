@@ -1,5 +1,4 @@
-import shapes.Shape;
-
+package shapes;
 public class ShapeSet {
 	static Shape[] shps = new Shape[100];
 	static int cnt = 0;

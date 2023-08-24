@@ -1,8 +1,8 @@
 package emp;
 
 public abstract class Employee {
-	int id;
-	String name;
+	private int id;
+	private String name;
 	
 	public Employee() {
 		

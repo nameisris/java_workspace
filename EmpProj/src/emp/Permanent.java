@@ -2,7 +2,7 @@ package emp;
 
 public class Permanent extends Employee {
 	
-	int sal;
+	private int sal;
 	
 	public Permanent() {
 

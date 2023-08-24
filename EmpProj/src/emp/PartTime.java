@@ -1,8 +1,8 @@
 package emp;
 
 public class PartTime extends Employee {
-	int time;
-	int payPerTime;
+	private int time;
+	private int payPerTime;
 	
 	public PartTime() {
 		
