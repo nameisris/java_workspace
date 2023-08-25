@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 import acc.Account;
+import acc.SpecialAccount;
 
 public class Bank {
 	Scanner sc = new Scanner(System.in);
@@ -19,10 +20,39 @@ public class Bank {
 		return Integer.parseInt(sc.nextLine()); // 엔터를 제거하기 위해 sc.nextInt() 대신 사용
 	}
 	
+	void selAccMenu() {
+		while(true) {
+			System.out.println("[코스타 은행]");
+			System.out.println("1. 일반 계좌");
+			System.out.println("2. 특수 계좌");
+			System.out.print("선택>> ");
+			int sel = Integer.parseInt(sc.nextLine());
+			
+			if(sel == 1) {
+				makeAccount();
+				break;
+			}
+			else if(sel == 2) {
+				makeSpecialAccount();
+				break;
+			}
+			else {
+				System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
+			}
+		}
+
+	}
+	
 	void makeAccount() {
-		System.out.println("[계좌 개설]");
+		System.out.println("[일반 계좌 개설]");
 		System.out.print("계좌 번호: ");
 		String id = sc.nextLine(); // 문자열 입력
+		
+		Account acc = searchAccById(id);
+		if(acc != null) {
+			System.out.println("계좌번호가 중복됩니다.");
+			return;
+		}
 		
 		System.out.print("이름: ");
 		String name = sc.nextLine();
@@ -31,6 +61,39 @@ public class Bank {
 		int money = Integer.parseInt(sc.nextLine());
 		
 		accs[accCnt++] = new Account(id, name, money);
+	}
+	
+	void makeSpecialAccount() {
+		System.out.println("[특수 계좌 개설]");
+		System.out.print("계좌 번호: ");
+		String id = sc.nextLine(); // 문자열 입력
+		
+		Account acc = searchAccById(id);
+		if(acc != null) {
+			System.out.println("계좌번호가 중복됩니다.");
+			return;
+		}
+		
+		System.out.print("이름: ");
+		String name = sc.nextLine();
+		
+		String grade;
+		while(true) {
+			System.out.print("등급 (VIP-V, Gold-G, Silver-S, Normal-N): ");
+			grade = sc.nextLine();
+			
+			if(!grade.equals("V") && !grade.equals("G") && !grade.equals("S") && !grade.equals("N") &&
+					!grade.equals("v") && !grade.equals("g") && !grade.equals("s") && !grade.equals("n")) {
+				System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
+				continue;
+			}
+			break;
+		}
+
+		System.out.print("임금액: ");
+		int money = Integer.parseInt(sc.nextLine());
+		
+		accs[accCnt++] = new SpecialAccount(id, name, grade, money);
 	}
 	
 	Account searchAccById(String id) {
@@ -118,7 +181,7 @@ public class Bank {
 			
 			switch(sel) {
 			case 1:
-				bank.makeAccount();
+				bank.selAccMenu();
 				break;
 			case 2:
 				bank.deposit();

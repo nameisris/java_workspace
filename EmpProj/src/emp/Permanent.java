@@ -28,6 +28,6 @@ public class Permanent extends Employee {
 	
 	@Override
 	public String info() {
-		return super.info() + ", 급여: " + getPay();
+		return super.info() + getPay();
 	}
 }

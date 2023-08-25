@@ -19,4 +19,8 @@
     <fullyQualifiedTypeName name="ex7.SutdaCard"/>
     <fullyQualifiedTypeName name="ex7.SingRobot"/>
     <fullyQualifiedTypeName name="ex7.DanceRobot"/>
+    <fullyQualifiedTypeName name="Helper"/>
+    <fullyQualifiedTypeName name="item.GroundUnit"/>
+    <fullyQualifiedTypeName name="java.lang.Math"/>
+    <fullyQualifiedTypeName name="MyArray"/>
 </qualifiedTypeNameHistroy>

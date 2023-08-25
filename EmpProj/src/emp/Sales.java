@@ -1,6 +1,6 @@
 package emp;
 
-public class Sales extends Permanent {
+public class Sales extends Permanent implements BusinessAble {
 	private int incentive;
 	
 	public Sales() {
@@ -30,4 +30,8 @@ public class Sales extends Permanent {
 		return super.info() + ", 인센티브: " + getIncentive();
 	}
 	
+	@Override
+	public void goBusiness(int date) {
+		incentive += date * 300000;
+	}
 }
