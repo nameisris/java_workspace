@@ -1,8 +1,10 @@
 package emp;
 
-public class PartTime extends Employee {
+public class PartTime extends Employee implements BusinessAble {
 	private int time;
 	private int payPerTime;
+	
+	private int incentive;
 	
 	public PartTime() {
 		
@@ -29,7 +31,7 @@ public class PartTime extends Employee {
 	public void setPayPerTime(int payPerTime) {
 		this.payPerTime = payPerTime;
 	}
-
+	
 	@Override
 	public int getPay() {
 		return getTime() * getPayPerTime();
@@ -37,8 +39,12 @@ public class PartTime extends Employee {
 
 	@Override
 	public String info() {
-		return super.info() + ", 근무 시간: " + getTime() + ", 시급: " + getPayPerTime();
+		return super.info() + getPay() + ", 근무 시간: " + getTime() + ", 시급: " + getPayPerTime() + ", 인센티브: " + incentive;
 	}
 	
-	
+	@Override
+	public void goBusiness(int date) {
+		incentive = date * 24 * getPayPerTime();
+		setTime(getTime() + date * 24);
+	}
 }
