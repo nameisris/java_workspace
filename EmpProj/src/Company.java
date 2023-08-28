@@ -1,3 +1,4 @@
+import emp.BusinessAble;
 import emp.Employee;
 
 public class Company {
@@ -22,5 +23,9 @@ public class Company {
 		}
 		
 		return tot;
+	}
+	
+	public void regBusinessTrip(BusinessAble emp, int date) {
+		emp.goBusiness(date);
 	}
 }
