@@ -31,7 +31,7 @@ public class Sales extends Permanent implements BusinessAble {
 	}
 	
 	@Override
-	public void goBusiness(int date) {
-		incentive += date * 300000;
+	public void goBusiness(int day) {
+		incentive += day * 300000;
 	}
 }

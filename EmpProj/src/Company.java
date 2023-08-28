@@ -25,7 +25,7 @@ public class Company {
 		return tot;
 	}
 	
-	public void regBusinessTrip(BusinessAble emp, int date) {
-		emp.goBusiness(date);
+	public void regBusinessTrip(BusinessAble emp, int day) {
+		emp.goBusiness(day);
 	}
 }

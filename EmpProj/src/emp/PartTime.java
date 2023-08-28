@@ -43,8 +43,8 @@ public class PartTime extends Employee implements BusinessAble {
 	}
 	
 	@Override
-	public void goBusiness(int date) {
-		incentive = date * 24 * getPayPerTime();
-		setTime(getTime() + date * 24);
+	public void goBusiness(int day) {
+		incentive = day * 24 * getPayPerTime();
+		setTime(getTime() + day * 24);
 	}
 }

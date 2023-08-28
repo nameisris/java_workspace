@@ -1,5 +1,7 @@
 package acc;
 
+import exc.BankException;
+
 public class SpecialAccount extends Account {
 
 	private String grade = "Normal";
@@ -43,12 +45,12 @@ public class SpecialAccount extends Account {
 	}
 	
 	@Override
-	public String info() {
+	public String toString() {
 		return String.format("고객번호: %s, 이름: %s, 등급: %s, 잔액: %d", super.getId(), super.getName(), grade, super.getBalance());
 	}
 	
 	@Override
-	public void deposit(int money) {
+	public void deposit(int money) throws BankException  {
 		super.deposit((int) (Math.round(money + money * interest))); // Math.round(): 반올림
 	}
 

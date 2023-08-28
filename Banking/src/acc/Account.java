@@ -1,5 +1,8 @@
 package acc;
 
+import exc.BankError;
+import exc.BankException;
+
 public class Account {
 	private String id;
 	private String name;
@@ -38,18 +41,22 @@ public class Account {
 	public void setBalance(int balance) {
 		this.balance = balance;
 	}
-
-	public String info() {
+	
+	@Override
+	public String toString() {
 		return String.format("고객번호: %s, 이름: %s, 잔액: %d", id, name, balance);
 	}
 	
-	public void deposit(int money) {
+	
+	public void deposit(int money) throws BankException {
+		if(money <= 0)
+			throw new BankException("입금 오류", BankError.MINUS);
 		balance += money;
 	}
 	
-	public void withdraw(int money) {
-		if(balance >= money) {
-			balance -= money;			
-		}
+	public void withdraw(int money) throws BankException {
+		if(balance < money)
+			throw new BankException("출금 오류", BankError.LACK);
+		balance -= money;
 	}
 }

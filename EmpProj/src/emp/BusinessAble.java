@@ -1,5 +1,5 @@
 package emp;
 
 public interface BusinessAble {
-	public void goBusiness(int date);
+	public void goBusiness(int day);
 }

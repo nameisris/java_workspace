@@ -25,4 +25,8 @@
     <fullyQualifiedTypeName name="MyArray"/>
     <fullyQualifiedTypeName name="LoginButton"/>
     <fullyQualifiedTypeName name="emp.BusinessAble"/>
+    <fullyQualifiedTypeName name="java.lang.ArithmeticException"/>
+    <fullyQualifiedTypeName name="java.lang.ArrayIndexOutOfBoundsException"/>
+    <fullyQualifiedTypeName name="java.lang.NullPointerException"/>
+    <fullyQualifiedTypeName name="java.lang.NumberFormatException"/>
 </qualifiedTypeNameHistroy>
