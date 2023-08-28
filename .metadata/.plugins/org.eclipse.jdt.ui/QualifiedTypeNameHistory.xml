@@ -23,4 +23,6 @@
     <fullyQualifiedTypeName name="item.GroundUnit"/>
     <fullyQualifiedTypeName name="java.lang.Math"/>
     <fullyQualifiedTypeName name="MyArray"/>
+    <fullyQualifiedTypeName name="LoginButton"/>
+    <fullyQualifiedTypeName name="emp.BusinessAble"/>
 </qualifiedTypeNameHistroy>
