@@ -31,6 +31,7 @@ public abstract class Employee {
 	
 	public String info() {
 		return "사번: " + getId() + ", 이름: " + getName() + ", 급여: ";
+//		return "사번: " + String.valueOf(getId()) + ", 이름: " + getName() + ", 급여: "; 
 	}
 	
 	public abstract int getPay();
