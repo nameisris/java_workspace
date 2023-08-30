@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 
 import acc.Account;
@@ -7,8 +10,7 @@ import exc.BankException;
 
 public class Bank {
 	Scanner sc = new Scanner(System.in);
-	Account[] accs = new Account[100];
-	int accCnt;
+	List<Account> accs = new ArrayList<>();
 	
 	int menu() throws BankException {
 		System.out.println("[코스타 은행]");
@@ -69,7 +71,8 @@ public class Bank {
 		System.out.print("임금액: ");
 		int money = Integer.parseInt(sc.nextLine());
 		
-		accs[accCnt++] = new Account(id, name, money);
+		accs.add(new Account(id, name, money));
+//		accs[accCnt++] = new Account(id, name, money);
 	}
 	
 	void makeSpecialAccount() throws BankException {
@@ -101,14 +104,22 @@ public class Bank {
 		System.out.print("임금액: ");
 		int money = Integer.parseInt(sc.nextLine());
 		
-		accs[accCnt++] = new SpecialAccount(id, name, grade, money);
+		accs.add(new SpecialAccount(id, name, grade, money));
+//		accs[accCnt++] = new SpecialAccount(id, name, grade, money);
 	}
 	
 	Account searchAccById(String id) {
-		Account acc = null;
-		for(int i = 0;i < accCnt;i++) {
-			if(accs[i].getId().equals(id)) {
-				return accs[i];
+//		Account acc = null;
+//		for(int i = 0;i < accs.size();i++) {
+//			if(accs.get(i).getId().equals(id)) {
+//				return accs.get(i);
+//			}
+//		}
+		
+		// 향상된 for문
+		for(Account acc: accs) {
+			if(acc.getId().equals(id)) {
+				return acc;
 			}
 		}
 		return null;
@@ -168,9 +179,15 @@ public class Bank {
 	}
 	
 	void allAccountInfo() {
-		for(int i = 0;i < accCnt;i++) {
-			System.out.println(accs[i]);
+		System.out.println("[전체 계좌 조회]");
+		Iterator<Account> it = accs.iterator();
+		while(it.hasNext()) {
+			System.out.println(it.next());
 		}
+		
+//		for(Account acc: accs) {
+//			System.out.println(acc);
+//		}
 	}
 
 	public static void main(String[] args) {
