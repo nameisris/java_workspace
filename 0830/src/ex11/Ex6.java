@@ -2,15 +2,16 @@ package ex11;
 
 import java.util.Comparator;
 import java.util.Iterator;
+import java.util.SortedSet;
 import java.util.TreeSet;
 
 public class Ex6 {
 
 	public static void main(String[] args) {
-		TreeSet<Student> set = new TreeSet(new Comparator<Student>() {
-			@Override
+		TreeSet<Student> set = new TreeSet<Student>(new Comparator<Student>() {
 			public int compare(Student o1, Student o2) {
 			
+				// getAverage()의 값이 float형이라 casting을 해주어야 하므로, 각 값의 차이가 0.01면 1을 return하기에, 오차가 발생 할 수 있으므로 해당 방법 사용 X
 //				if(o1.getAverage() > o2.getAverage()) {
 //					return 1;
 //				} else if(o1.getAverage() < o2.getAverage()) {
@@ -20,6 +21,8 @@ public class Ex6 {
 //				}
 				
 //				return (int) (o1.getAverage() - o2.getAverage());
+				
+				// 평균의 차이는 오차 발생 가능성이 있기에, 합의 차이로 계산
 				return o1.getTotal() - o2.getTotal();
 			}
 		});
@@ -47,20 +50,25 @@ public class Ex6 {
 	}
 
 	static int getGroupCount(TreeSet tset, int from, int to) {
-		Iterator<Student> it = tset.iterator();
-		int cnt = 0;
+		// 국영수 값을 전부 from과 to로 하여, 평균도 from ~ to가 되도록
+		SortedSet<Student> ss = tset.subSet(new Student("", 0, 0, from, from, from), new Student("", 0, 0, to, to, to));
 		
-		while(it.hasNext()) {
-			double d = it.next().getAverage();
-			if(d >= from && d < to) {
-				cnt++;
-			}
-		}
-		return cnt;
+		// from에서 to 사이의 값만이 들어간 ss의 size를 반환
+		return ss.size();
+//		Iterator<Student> it = tset.iterator();
+//		int cnt = 0;
+//		
+//		while(it.hasNext()) {
+//			double d = it.next().getAverage();
+//			if(d >= from && d < to) {
+//				cnt++;
+//			}
+//		}
+//		return cnt;
 	}
 }
 
-class Student implements Comparable {
+class Student implements Comparable<Student> {
 	String name;
 	int ban;
 	int no;
@@ -89,7 +97,8 @@ class Student implements Comparable {
 		return name + ", " + ban + ", " + no + ", " + kor + ", " + eng + ", " + math + ", " + getTotal() + ", " + getAverage();
 	}
 
-	public int compareTo(Object o) {
+	@Override
+	public int compareTo(Student o) {
 		if (o instanceof Student) {
 			Student tmp = (Student) o;
 			return name.compareTo(tmp.name);

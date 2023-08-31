@@ -2,22 +2,23 @@ package ex11;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 
 public class Ex5 {
 
 	public static void main(String[] args) {
-		ArrayList list = new ArrayList();
+		ArrayList<Human> list = new ArrayList<>();
 		
-		list.add(new Student2("홍길동", 1, 1, 100, 100, 100));
-		list.add(new Student2("남궁성", 1, 2, 90, 70, 80));
-		list.add(new Student2("김자바", 1, 3, 80, 80, 90));
-		list.add(new Student2("이자바", 1, 4, 70, 90, 70));
-		list.add(new Student2("안자바", 1, 5, 60, 100, 80));
+		list.add(new Human("홍길동", "000123", 24, "서울시 금천구"));
+		list.add(new Human("남궁성", "931216", 31, "경기도 광명시"));
+		list.add(new Human("김자바", "880505", 36, "서울시 강서구"));
+		list.add(new Human("이자바", "991101", 25, "경기도 과천시"));
+		list.add(new Human("안자바", "021213", 22, "서울시 송파구"));
 		
 		Collections.sort(list);
 		
-		Iterator it = list.iterator();
+		Iterator<Human> it = list.iterator();
 		while (it.hasNext())
 			System.out.println(it.next());
 
@@ -25,39 +26,36 @@ public class Ex5 {
 
 }
 
-class Student2 implements Comparable<Student2>{
+
+class Human implements Comparable<Human> {
 	String name;
-	int ban;
-	int no;
-	int kor, eng, math;
+	String id;
+	int age;
+	String address;
 	
-	Student2() {
-		
-	}
-
-	Student2(String name, int ban, int no, int kor, int eng, int math) {
+	Human(String name, String id, int age, String address) {
 		this.name = name;
-		this.ban = ban;
-		this.no = no;
-		this.kor = kor;
-		this.eng = eng;
-		this.math = math;
+		this.id = id;
+		this.age = age;
+		this.address = address;
 	}
-
-	int getTotal() {
-		return kor + eng + math;
-	}
-
-	float getAverage() {
-		return (int) ((getTotal() / 3f) * 10 + 0.5) / 10f;
-	}
-
+	
+	@Override
 	public String toString() {
-		return name + "," + ban + "," + no + "," + kor + "," + eng + "," + math + "," + getTotal() + "," + getAverage();
+		return String.format("이름: %s, 주민번호: %s, 나이: %d, 주소: %s", name, id, age, address);
 	}
 
 	@Override
-	public int compareTo(Student2 o) {
-		return name.compareTo(o.name);
+	public int compareTo(Human o) {
+		int ret = name.compareTo(o.name);
+		
+		// 이름이 같을 경우
+		if(ret == 0) {
+			// 주민번호 순으로 정렬
+			ret = id.compareTo(o.id);
+		}
+		
+		return id.compareTo(o.id);
 	}
+	
 }

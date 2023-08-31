@@ -8,7 +8,7 @@ import java.util.TreeSet;
 public class Ex2 {
 
 	public static void main(String[] args) {
-		ArrayList list = new ArrayList(); // 중복 허용, 삽입(저장) 순서 유지
+		ArrayList<Integer> list = new ArrayList<>(); // 중복 허용, 삽입(저장) 순서 유지
 		
 		list.add(3);
 		list.add(6);
@@ -16,11 +16,16 @@ public class Ex2 {
 		list.add(2);
 		list.add(2);
 		list.add(7);
+
+		// 중복 비허용
+		HashSet<Integer> set = new HashSet<>(list);	// 3, 6, 2, 7
 		
-		HashSet set = new HashSet(list);	// 중복 비허용
-		TreeSet tset = new TreeSet(set);	// 오름차순 정렬
-		Stack stack = new Stack();			// 꺼낼 때 후입선출 (LIFO)
+		// 정렬 (오름차순)
+		TreeSet<Integer> tset = new TreeSet<>(set);	// 2, 3, 6, 7
 		
+		// 꺼낼 때 LIFO (후입선출)
+		// 즉, 역순으로 정렬
+		Stack<Integer> stack = new Stack<>();			// 7, 3, 6, 2
 		stack.addAll(tset);
 		
 		while (!stack.empty())

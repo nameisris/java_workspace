@@ -3,7 +3,6 @@ package acc;
 import exc.BankException;
 
 public class SpecialAccount extends Account {
-
 	private String grade = "Normal";
 	private double interest = 0.01;
 
