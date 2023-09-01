@@ -1,8 +1,10 @@
 package acc;
 
+import java.io.Serializable;
+
 import exc.BankException;
 
-public class SpecialAccount extends Account {
+public class SpecialAccount extends Account implements Serializable {
 	private String grade = "Normal";
 	private double interest = 0.01;
 
