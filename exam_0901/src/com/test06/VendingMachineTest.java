@@ -15,12 +15,12 @@ public class VendingMachineTest {
 	}
 
 	private static void printMenu() {
-		Scanner sc = new Scanner(System.in);
 		VendingMachineBiz vm = new VendingMachineBiz();
 		
-		boolean end = false;
+		boolean end = true;
 		
-		while(!end) {
+		while(end) {
+			Scanner sc = new Scanner(System.in);
 			System.out.println("============================");
 			System.out.println("[음료수 자판기 관리 시스템]");
 			System.out.println("============================");
@@ -37,7 +37,12 @@ public class VendingMachineTest {
 			
 			switch(num) {
 			case 1:
-				vm.printCart();
+				Drink[] drinkList = new Drink[] {
+						new Coffee(),
+						new Coke(),
+						new Juice()
+				};
+				vm.printDrinkList(drinkList);
 				break;
 			case 2:
 				vm.cartDrink(new Juice());
@@ -49,12 +54,11 @@ public class VendingMachineTest {
 				vm.cartDrink(new Coke());
 				break;
 			case 5:
-				Drink[] drinkList = null;
-				vm.printDrinkList(drinkList);
+				vm.printCart();
 				break;
 			case 9:
 				System.out.println("프로그램 종료");
-				end = true;
+				end = false;
 				break;
 			default:
 				System.out.println("메뉴값을 확인 후 다시 입력하세요.");
