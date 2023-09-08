@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="shapes.Rectangle"/>
-    <fullyQualifiedTypeName name="java.awt.Shape"/>
-    <fullyQualifiedTypeName name="shapes.Shape"/>
-    <fullyQualifiedTypeName name="point.Point"/>
-    <fullyQualifiedTypeName name="ex7.SutdaDeck"/>
-    <fullyQualifiedTypeName name="ex7.SutdaCard"/>
     <fullyQualifiedTypeName name="ex7.SingRobot"/>
     <fullyQualifiedTypeName name="ex7.DanceRobot"/>
     <fullyQualifiedTypeName name="Helper"/>
@@ -60,4 +54,10 @@
     <fullyQualifiedTypeName name="com.test06.entity.Coffee"/>
     <fullyQualifiedTypeName name="com.test06.entity.Juice"/>
     <fullyQualifiedTypeName name="com.test06.entity.Drink"/>
+    <fullyQualifiedTypeName name="java.sql.DriverManager"/>
+    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+    <fullyQualifiedTypeName name="acc.Account"/>
+    <fullyQualifiedTypeName name="dao.AccountDAO"/>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="java.sql.Statement"/>
 </qualifiedTypeNameHistroy>
