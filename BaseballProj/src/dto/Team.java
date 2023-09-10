@@ -37,7 +37,7 @@ public class Team {
 	
 	@Override
 	public String toString() {
-		return String.format("팀번호: %d, 팀명: %s, 연고지: %s", getNum(), getName(), getLocal());
+		return String.format("\n[팀번호: %d, 팀명: %s, 연고지: %s]", getNum(), getName(), getLocal());
 	}
 	
 }

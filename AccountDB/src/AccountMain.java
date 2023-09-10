@@ -7,8 +7,8 @@ public class AccountMain {
 		// service.accountInfo("10003");
 		
 		// 계좌 개설
-		// Account acc = new Account("10004", "탁길동", 300000, "VIP");
-		// service.makeAccount(acc);
+		Account acc = new Account("10004", "탁길동", 300000, "VIP");
+		service.makeAccount(acc);
 		
 		// 입금
 		// service.deposit("10004", 50000);
@@ -17,7 +17,7 @@ public class AccountMain {
 		// service.withdraw("10004", 20000);
 		
 		// 전체계좌조회
-		service.allAccountInfo();
+		// service.allAccountInfo();
 	}
 
 }

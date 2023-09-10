@@ -15,8 +15,7 @@ public class DAO {
 			Properties db = new Properties();
 			db.load(new FileInputStream("db.properties"));
 			Class.forName(db.getProperty("driver"));
-			conn = DriverManager.getConnection(db.getProperty("url"),
-					db.getProperty("user"), db.getProperty("password"));
+			conn = DriverManager.getConnection(db.getProperty("url"), db.getProperty("user"), db.getProperty("password"));
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
