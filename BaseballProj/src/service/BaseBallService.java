@@ -14,6 +14,14 @@ import exc.BaseBallException;
 public class BaseBallService {
 	Scanner sc = new Scanner(System.in);
 	
+//	public TeamDAO teamDAO;
+//	public PlayerDAO playerDAO;
+//	
+//	public BaseBallService() {
+//		teamDAO = new TeamDAO();
+//		playerDAO = new PlayerDAO();
+//	}
+	
 	// 1. 팀 등록
 	public void regTeam() throws BaseBallException {
 		Connection conn = TeamDAO.getConnection();
@@ -29,6 +37,7 @@ public class BaseBallService {
 		
 		// 팀이 존재한다면
 		if(team != null) {
+			
 			TeamDAO.close(conn);
 			throw new BaseBallException("팀 오류", BaseBallError.TEAMEXISTED);
 		}
@@ -68,7 +77,7 @@ public class BaseBallService {
 			local = "대전";
 			break;
 		}
-		
+
 //		System.out.print("연고지: ");
 //		String local = sc.nextLine();
 		

@@ -37,10 +37,10 @@ public class TeamDAO {
 	
 	// 팀 삽입
 	public static int insertTeam(Connection conn, Team team) {
-		int cnt = 0;
-		
 		PreparedStatement pstmt = null;
 		String sql = "insert into team (name, local) values(?,?)";
+		
+		int cnt = 0;
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -62,11 +62,10 @@ public class TeamDAO {
 	
 	// 팀 조회
 	public static Team selectTeam(Connection conn, String teamName) {
-		Team team = null;
-		
 		PreparedStatement pstmt = null;
-		String sql = "select * from team where name = ?";
 		ResultSet rs = null;
+		Team team = null;
+		String sql = "select * from team where name = ?";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -80,6 +79,13 @@ public class TeamDAO {
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		return team;
@@ -114,7 +120,7 @@ public class TeamDAO {
 				e.printStackTrace();
 			}
 		}
-		
+
 		return teamList;
 	}
 }

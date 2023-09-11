@@ -7,7 +7,7 @@ public class AccountMain {
 		// service.accountInfo("10003");
 		
 		// 계좌 개설
-		Account acc = new Account("10004", "탁길동", 300000, "VIP");
+		Account acc = new Account("10009", "탁길동", 300000, "VIP");
 		service.makeAccount(acc);
 		
 		// 입금

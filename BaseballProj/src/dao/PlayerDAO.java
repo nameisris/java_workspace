@@ -37,17 +37,16 @@ public class PlayerDAO {
 	
 	// 선수 삽입
 	public static int insertPlayer(Connection conn, Player player) {
-		int cnt = 0;
-		
 		PreparedStatement pstmt = null;
-		String sql = "insert into player (name, backnum, teamnum, teamname) values (?,?,(select num from team where name = ?), ?)";
+		String sql = "insert into player (name, backnum, teamnum) values (?,?,(select num from team where name = ?))";
+		
+		int cnt = 0;
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, player.getName());
 			pstmt.setInt(2, player.getBacknum());
 			pstmt.setString(3, player.getTeamname());
-			pstmt.setString(4, player.getTeamname());
 			
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
@@ -59,6 +58,7 @@ public class PlayerDAO {
 				e.printStackTrace();
 			}
 		}
+
 		return cnt;
 	}
 	
@@ -67,20 +67,24 @@ public class PlayerDAO {
 		List<Player> playerList = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "select * from player where name = ?";
+		String sql = "select p.num, p.name, p.backnum, p.teamnum, t.name "
+				+ "from player p join team t on p.teamnum = t.num where p.name = ?";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, pname);
 			rs = pstmt.executeQuery();
 			
-			if(rs != null && rs.next()) {
-				Integer num = rs.getInt(1);
-				String name = rs.getString(2);
-				Integer backnum = rs.getInt(3);
-				Integer teamnum = rs.getInt(4);
-				String teamname = rs.getString(5);
-				playerList.add(new Player(num, name, backnum, teamnum, teamname));
+			if(rs != null) {
+				while(rs.next()) {
+					Integer num = rs.getInt(1);
+					String name = rs.getString(2);
+					Integer backnum = rs.getInt(3);
+					Integer teamnum = rs.getInt(4);
+					String teamname = rs.getString(5);
+					playerList.add(new Player(num, name, backnum, teamnum, teamname));
+				}
+				
 			}
 			
 		} catch(Exception e) {
@@ -102,22 +106,24 @@ public class PlayerDAO {
 		List<Player> playerList = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "select * from player where backnum = ?";
+		String sql = "select p.num, p.name, p.backnum, p.teamnum, t.name "
+				+ "from player p join team t on p.teamnum = t.num where p.backnum = ?";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, pbacknum);
 			rs = pstmt.executeQuery();
 			
-			if(rs != null && rs.next()) {
-				Integer num = rs.getInt(1);
-				String name = rs.getString(2);
-				Integer backnum = rs.getInt(3);
-				Integer teamnum = rs.getInt(4);
-				String teamname = rs.getString(5);
-				playerList.add(new Player(num, name, backnum, teamnum, teamname));
+			if(rs != null) {
+				while(rs.next()) {
+					Integer num = rs.getInt(1);
+					String name = rs.getString(2);
+					Integer backnum = rs.getInt(3);
+					Integer teamnum = rs.getInt(4);
+					String teamname = rs.getString(5);
+					playerList.add(new Player(num, name, backnum, teamnum, teamname));
+				}
 			}
-			
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -128,7 +134,7 @@ public class PlayerDAO {
 				e.printStackTrace();
 			}
 		}
-		
+
 		return playerList;
 	}
 
@@ -137,20 +143,23 @@ public class PlayerDAO {
 		List<Player> playerList = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "select * from player where num = ?";
+		String sql = "select p.num, p.name, p.backnum, p.teamnum, t.name "
+				+ "from player p join team t on p.teamnum = t.num where p.num = ?";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, pnum);
 			rs = pstmt.executeQuery();
 			
-			if(rs != null && rs.next()) {
-				Integer num = rs.getInt(1);
-				String name = rs.getString(2);
-				Integer backnum = rs.getInt(3);
-				Integer teamnum = rs.getInt(4);
-				String teamname = rs.getString(5);
-				playerList.add(new Player(num, name, backnum, teamnum, teamname));
+			if(rs != null) {
+				while(rs.next()) {
+					Integer num = rs.getInt(1);
+					String name = rs.getString(2);
+					Integer backnum = rs.getInt(3);
+					Integer teamnum = rs.getInt(4);
+					String teamname = rs.getString(5);
+					playerList.add(new Player(num, name, backnum, teamnum, teamname));	
+				}
 			}
 			
 		} catch(Exception e) {
@@ -168,24 +177,27 @@ public class PlayerDAO {
 	}
 	
 	// 선수 조회 (팀)
-	public static List<Player> selectPlayerByTeam(Connection conn, String teamName) {
+	public static List<Player> selectPlayerByTeam(Connection conn, String teamname1) {
 		List<Player> playerList = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "select * from player where teamname = ?";
+		String sql = "select p.num, p.name, p.backnum, p.teamnum, t.name "
+				+ "from player p join team t on p.teamnum = t.num where t.name = ?";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, teamName);
+			pstmt.setString(1, teamname1);
 			rs = pstmt.executeQuery();
 			
-			if(rs != null && rs.next()) {
-				Integer num = rs.getInt(1);
-				String name = rs.getString(2);
-				Integer backnum = rs.getInt(3);
-				Integer teamnum = rs.getInt(4);
-				String teamname = rs.getString(5);
-				playerList.add(new Player(num, name, backnum, teamnum, teamname));
+			if(rs != null) {
+				while(rs.next()) {
+					Integer num = rs.getInt(1);
+					String name = rs.getString(2);
+					Integer backnum = rs.getInt(3);
+					Integer teamnum = rs.getInt(4);
+					String teamname2 = rs.getString(5);
+					playerList.add(new Player(num, name, backnum, teamnum, teamname2));	
+				}
 			}
 			
 		} catch(Exception e) {

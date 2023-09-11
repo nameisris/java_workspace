@@ -11,6 +11,13 @@ public class Player {
 		
 	}
 	
+//	public Player(Integer num, String name, Integer backnum, Integer teamnum) {
+//		this.num = num;
+//		this.name = name;
+//		this.backnum = backnum;
+//		this.teamnum = teamnum;
+//	}
+	
 	public Player(Integer num, String name, Integer backnum, Integer teamnum, String teamname) {
 		this.num = num;
 		this.name = name;
