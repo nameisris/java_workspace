@@ -16,7 +16,7 @@ public class Order {
 	// 주문 취소 여부
 	private boolean isCanceled;	
 	
-	// 생성자 정의	
+	// 삽입 생성자
 	public Order(String customer, String productCode, int amount) {
 		this.customer = customer;
 		this.productCode = productCode;

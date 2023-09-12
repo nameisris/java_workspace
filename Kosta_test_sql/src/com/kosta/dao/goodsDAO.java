@@ -139,25 +139,33 @@ public class goodsDAO {
 	}
 	
 	// 재고량 변경
-	public static void updateProduct(int amount, Order order) {
+	public static void updateProduct(Order order) {
 		Connection conn = getConnection();
 		PreparedStatement pstmt = null;
+		String sql = "update goods set stock = ? where code = ?";
 		
 		// 특정 코드의 제품 정보 조회
 		Goods goods = selectProductByCode(order.getProductCode());
-		// 취소
-		if(order.isCanceled()) {
+
+		// 재고 변경 수량
+		if(!(order.isCanceled())) {
+			goods.setStock(goods.getStock() - order.getAmount());
 			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, goods.getStock());
+				pstmt.setString(2, goods.getCode());
+			} catch(Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if(pstmt != null) pstmt.close();
+				} catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
 		}
-		// 해당 제품 수량
-		int stock = goods.getStock();
 	
-		String sql = "update goods set stock = ? where code = ?";
-		
-//		try {
-//			pstmt = conn.prepareStatement(sql);
-//			
-//		}
-		
+		close(conn);
 	}
 }

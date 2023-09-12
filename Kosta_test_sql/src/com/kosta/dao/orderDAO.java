@@ -49,6 +49,7 @@ public class orderDAO {
 			pstmt.setString(1, order.getCustomer());
 			pstmt.setString(2, order.getProductCode());
 			pstmt.setInt(3, order.getAmount());
+			// pstmt.setBoolean(4, false);
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -62,6 +63,8 @@ public class orderDAO {
 		
 		close(conn);
 		
+		goodsDAO.updateProduct(order);
+		
 		return cnt;
 	}
 	
@@ -71,7 +74,7 @@ public class orderDAO {
 		List<Order> ordersList = new ArrayList<>();
 		Statement stmt = null;
 		ResultSet rs = null;
-		String sql = "select * from orders";
+		String sql = "select customer, productcode, amount from orders";
 
 		try {
 			stmt = conn.createStatement();
